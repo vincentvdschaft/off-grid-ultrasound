@@ -1,0 +1,13 @@
+jaxus==0.2.1
+GitPython
+pytest
+scipy
+numpy
+matplotlib
+tqdm
+opencv-python
+schema
+h5py
+pyyaml
+optax
+scikit-image
