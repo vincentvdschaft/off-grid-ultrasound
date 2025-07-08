@@ -14,15 +14,13 @@ pip uv sync
 ```
 
 ### Using pip
-If you are not using uv, you can install the dependencies with pip. First, create a virtual environment:
+If you are not using uv, you can install the dependencies with pip. First, create a virtual environment and activate it. Then install the dependencies from the `requirements.txt` file.
 ```bash
 python3 -m venv .myvenv
 source .myvenv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
-
-
 
 ## Running in docker
 ### Building the docker image
