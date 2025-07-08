@@ -1,0 +1,26 @@
+[project]
+name = "off-grid-ultrasound-wip"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "gitpython>=3.1.44",
+    "h5py>=3.14.0",
+    "jax[cuda12]>=0.6.2",
+    "jaxus",
+    "matplotlib>=3.10.3",
+    "numpy>=2.3.1",
+    "opencv-python>=4.11.0.86",
+    "optax>=0.2.5",
+    "pyqt5>=5.15.11",
+    "pytest>=8.4.1",
+    "pyyaml>=6.0.2",
+    "schema>=0.7.7",
+    "scikit-image>=0.25.2",
+    "scipy>=1.16.0",
+    "tqdm>=4.67.1",
+]
+
+[tool.uv.sources]
+jaxus = { git = "https://github.com/vincentvdschaft/jaxus" }

@@ -1,0 +1,48 @@
+# System folders
+__pycache__/
+.vscode/
+wandb/
+*.code-workspace
+jax-env/
+.github/
+.devcontainer/
+
+# ng_ indicates "no git" and is used to ignore files that should not be committed to git
+ng_*.py
+ng_*.ipynb
+no_git/
+ng_*
+
+# Ignore custom config files
+config/custom
+
+# Folders
+figures/
+results/
+not_checked_in/
+temp/
+data/
+venv/
+jaxus/
+
+
+# Filetypes that should never be committed
+*.npz
+*.npy
+*.mat
+*.mp4
+*.png
+*.hdf5
+*.log
+*.dll
+*.gif
+*.zip
+*.eps
+*.pdf
+*.tar
+*.pkl
+*.out
+
+!assets/fitting.png
+
+jit_update-*cache

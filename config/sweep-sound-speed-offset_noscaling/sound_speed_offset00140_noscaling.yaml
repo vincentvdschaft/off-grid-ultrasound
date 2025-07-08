@@ -1,0 +1,114 @@
+# The path to the HDF5 file to load the data from
+path: data/S5-1_cirs.hdf5
+
+
+# Defining the scatterers
+####################################################################################################
+# Define the scatterers in the scene.
+# Option 1:
+# Set the target_region_mm to define the region in which the scatterers are placed and the grid shape.
+# Option 2:
+# Set the target_region_mm to define the region in which the scatterers are placed and set the grid_spacing_wl.
+# Option 3:
+# Set the grid_shape, grid_spacing_wl, grid_start_points_mm, and grid_center to define the grid.
+# Option 4:
+# Set init_file to load the scatterers from a file.
+
+target_region_mm: [-40, 40, 2, 100]
+
+# The number of points in the initial grid (x, z) or (x, y, z)
+grid_shape: [256, 384]
+
+# The spacing between points in the initial grid in wavelengths of the transducer center frequency (x, z) or (x, y, z)
+grid_spacing_wl: #[0.5, 0.5]
+
+grid_start_points_mm: [0, 1]
+
+grid_center: [false, false]
+
+# Set to true in order to initialize not with a grid but by sampling the scatterers from the DAS image
+# enable_sample_locations_from_image: true
+initial_sampling_locations: 'uniform_random' # | 'from_image' | 'grid'
+
+# The path to the npz file to load the scatterer locations from
+init_file: 
+####################################################################################################
+
+# The frame(s) to load from the file
+frames: 0
+
+# The transmit(s) to load from the file
+transmits: [40]
+
+# The way the transmit delays are computed
+# fully_general:          
+# -> The transmitted wavefield is computed as a sum of the wavefields from each transmitting element
+# wavefront_only_general:
+# -> The transmit delay is computed to be the first wavefront from a transmitting element to reach the point of interest
+# wavefront_only_general_interpolated: 
+# -> The same as wavefront_only_general but computes the delays with lens correction once and then interpolates from these
+# virtual_source:
+# -> The transmit delay is computed from a virtual focus point
+forward_model_type: fully_general
+
+n_iterations: 5000
+
+plot_interval: 5000
+
+batch_size: 512
+
+gradient_accumulation: 1
+
+learning_rate: 1e-2
+
+# see infer.py > REGULARIZATION_PARAMS
+regularization_params:
+  order: 1.0
+regularization_type: LP_norm
+regularization_weight: 0.0
+symlog_epsilon: 0.01
+
+# The smallest axial sample index that is op/home/vincent/1-projects/field-usbmd-converter/output/rf_data_20240913_112006_10scat.hdf5timized for. This is used to discard the
+# first few samples of the rf data.
+ax_min: 96
+
+# The number of axial samples that are optimized for. The samples from ax_min to
+# ax_min + n_ax are optimized. Set to -1 to optimize all samples.
+n_ax: 1536
+
+kernel_image_radius_mm: 0.22
+
+kernel_image_pixel_size_mm: 0.1
+
+# Choose from
+# - 'positive': Apply exp to force the scattering amplitude to be positive
+# - 'symlog': Apply symlog to allow positive and negative values, but with a logarithmic scale
+# - 'none': Do not apply any reparameterization
+scat_amp_reparameterization: symlog
+
+optimize_scatterer_positions: true
+
+save_state_interval: 5000
+
+
+n_grad_scat: -1
+
+# The standard deviation of the noise to add to the scatterer positions
+noise_standard_deviation: 0.0
+
+yz_plane_xval_mm: 5
+xz_plane_yval_mm: 0
+
+apply_lens_correction: true
+
+lens_sound_speed_mps: 1063
+lens_thickness_mm: 1.0
+
+f_number: 0.25
+
+progress_bars: false
+
+run_name: cirs_single_sa_fg_sound_speed_offset140_noscaling
+
+sound_speed_offset: 140
+enable_wavelength_scaling: False
