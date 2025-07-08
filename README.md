@@ -5,15 +5,24 @@ INverse grid-Free Estimation of Reflectivities (INFER) is a method for off-grid 
 ![A figure from the paper showing a comparison of results.](assets/fitting.gif)
 
 ## Installing the dependencies
-The code was tested with python 3.10. The dependencies can be installed by running
+The code was tested with python 3.12.
+
+### Using uv
+If you are using [uv](https://docs.astral.sh/uv/) to manage your python environments, you can simply run
 ```bash
+pip uv sync
+```
+
+### Using pip
+If you are not using uv, you can install the dependencies with pip. First, create a virtual environment:
+```bash
+python3 -m venv .myvenv
+source .myvenv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
-After that you also need to install JAX. To install JAX, please refer to the [official installation guide](https://jax.readthedocs.io/en/latest/installation.html).
-At the time of writing the command to install JAX is
-```bash
-pip install -U "jax[cuda12]"
-```
+
+
 
 ## Running in docker
 ### Building the docker image
