@@ -43,6 +43,6 @@ jaxus/
 *.pkl
 *.out
 
-!assets/fitting.png
+!assets/fitting.gif
 
 jit_update-*cache
